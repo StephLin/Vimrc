@@ -6,7 +6,7 @@ wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
 sudo apt-add-repository "deb http://apt.llvm.org/$(lsb_release -cs)/ llvm-toolchain-$(lsb_release -cs)-6.0 main"
 sudo apt-get update
 
-sudo apt-get install -y vim git python-dev python3 cmake build-essential llvm-6.0 clang-6.0 libclang-6.0-dev libboost-all-dev 
+sudo apt-get install -y vim git python-dev python3 cmake build-essential llvm-6.0 clang-6.0 libclang-6.0-dev libboost-all-dev python python3 python-dev python3-dev
 
 cp ./.vimrc ~
 mkdir -p ~/.vim/bundle
