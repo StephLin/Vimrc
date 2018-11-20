@@ -5,7 +5,7 @@ set shiftwidth=4
 set encoding=utf-8
 set laststatus=2
 set autoindent " indent automatically on pressing enter
-
+set background=dark " Fix tmux color error
 set nocompatible              " be iMproved, required
 filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -45,6 +45,7 @@ set completeopt-=preview
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='badwolf'
+let g:airline_powerline_fonts = 1
 let g:ycm_python_binary_path='/usr/bin/python3'
 let g:ycm_server_python_interpreter='/usr/bin/python'
 let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
