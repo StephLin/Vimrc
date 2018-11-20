@@ -1,4 +1,12 @@
 set nu
+set relativenumber
+
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
+
 set tabstop=4
 set expandtab
 set shiftwidth=4
