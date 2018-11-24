@@ -36,6 +36,7 @@ Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'majutsushi/tagbar'
 Plugin 'Raimondi/delimitMate'
+Plugin 'mattn/emmet-vim'
 
 " Track the engine.
 Plugin 'SirVer/ultisnips'
