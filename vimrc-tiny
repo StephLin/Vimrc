@@ -18,10 +18,6 @@ set backspace=indent,eol,start
 
 let python_highlight_all=1
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
 map <C-Left> :bprev<CR>
 map <C-Right> :bnext<CR>
 map <bar> :vnew<CR>
