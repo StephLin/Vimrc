@@ -1,0 +1,31 @@
+set nu
+set relativenumber
+
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
+
+set tabstop=4
+set expandtab
+set shiftwidth=4
+set encoding=utf-8
+set laststatus=2
+set autoindent " indent automatically on pressing enter
+set background=dark " Fix tmux color error
+set backspace=indent,eol,start
+
+let python_highlight_all=1
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+map <C-Left> :bprev<CR>
+map <C-Right> :bnext<CR>
+map <bar> :vnew<CR>
+nmap <S-Up> <C-w>-
+nmap <S-Down> <C-w>+
+nmap <S-Left> <C-w><
+nmap <S-Right> <C-w>>
