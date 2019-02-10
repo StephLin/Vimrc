@@ -14,6 +14,8 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 git clone --recursive https://github.com/Valloric/YouCompleteMe.git ~/.vim/bundle/YouCompleteMe
 
 cp ./cpp-ycm_extra_conf.py ~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py
+mkdir -p ~/.vim/colors
+ln -s ~/.vim/bundle/space-vim-dark/colors/space-vim-dark.vim ~/.vim/colors/space-vim-dark.vim
 
 mkdir ~/.ycm_build
 cd ~/.ycm_build
@@ -21,7 +23,7 @@ cmake -G "Unix Makefiles" -DUSE_SYSTEM_BOOST=ON -DUSE_SYSTEM_LIBCLANG=ON . ~/.vi
 cmake --build . --target ycm_core --config Release
 rm -r ~/.ycm_build
 
-python ~/.vim/bundle/YouCompleteMe/install.py --clang-completer
+python3 ~/.vim/bundle/YouCompleteMe/install.py --clang-completer
 
 vim +PluginInstall +qall
-vim +PluginInstall +qall
+ln -s 
