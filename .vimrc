@@ -57,9 +57,9 @@ Plugin 'mattn/emmet-vim'
 Plugin 'Chiel92/vim-autoformat'
 
 " Trace
-Plugin 'majutsushi/tagbar.git'
-Plugin 'ludovicchabant/vim-gutentags'
-Plugin 'aceofall/gtags.vim'
+" Plugin 'majutsushi/tagbar.git'
+" Plugin 'ludovicchabant/vim-gutentags'
+" Plugin 'aceofall/gtags.vim'
 
 " Snip
 Plugin 'SirVer/ultisnips'
