@@ -6,12 +6,14 @@ wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
 sudo apt-add-repository "deb http://apt.llvm.org/$(lsb_release -cs)/ llvm-toolchain-$(lsb_release -cs)-6.0 main"
 sudo apt-get update
 
-sudo apt-get install -y vim git python-dev python3 cmake build-essential llvm-6.0 clang-6.0 libclang-6.0-dev libboost-all-dev python python3 python-dev python3-dev
+sudo apt-get install -y vim git python-dev python3 cmake build-essential llvm-6.0 clang-6.0 libclang-6.0-dev libboost-all-dev python python3 python-dev python3-dev powerline fonts-powerline
 
 cp ./.vimrc ~
 mkdir -p ~/.vim/bundle
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 git clone --recursive https://github.com/Valloric/YouCompleteMe.git ~/.vim/bundle/YouCompleteMe
+
+cp ./cpp-ycm_extra_conf.py ~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py
 
 mkdir ~/.ycm_build
 cd ~/.ycm_build
@@ -21,4 +23,5 @@ rm -r ~/.ycm_build
 
 python ~/.vim/bundle/YouCompleteMe/install.py --clang-completer
 
+vim +PluginInstall +qall
 vim +PluginInstall +qall
