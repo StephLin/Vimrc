@@ -2,9 +2,9 @@ set nu
 set relativenumber
 
 augroup numbertoggle
-  autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+    autocmd!
+    autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+    autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
 
 set tabstop=4
@@ -17,30 +17,66 @@ set background=dark " Fix tmux color error
 set backspace=indent,eol,start
 set hlsearch
 set incsearch
-set nocompatible              " be iMproved, required
-filetype off                  " required
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+set hidden
 
-" Plugins for Vim
-Plugin 'VundleVim/Vundle.vim' " required
-Plugin 'L9'
-Plugin 'scrooloose/nerdtree', { 'on': 'NERDTreeTabsToggle' }
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-" Plugin 'airblade/vim-gitgutter'
-" Plugin 'mhinz/vim-signify'
-" Plugin 'gregsexton/MatchTag'
-Plugin 'Valloric/MatchTagAlways'
-Plugin 'kien/ctrlp.vim'
-Plugin 'tpope/vim-surround'
-Plugin 'octol/vim-cpp-enhanced-highlight'
-Plugin 'terryma/vim-multiple-cursors'
-" Plugin 'tomasiser/vim-code-dark'
-" colorscheme codedark
-Plugin 'romainl/vim-cool'
+set t_Co=256
+set completeopt-=preview
+set t_ut=
 
-Plugin 'liuchengxu/space-vim-dark'
+syntax on
+
+" set nocompatible              " be iMproved, required
+" filetype off                  " required
+" set rtp+=~/.vim/bundle/Vundle.vim
+call plug#begin('~/.vim/plugged')
+
+" Plugs for Vim
+Plug 'VundleVim/Vundle.vim' " required
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeTabsToggle' }
+Plug 'jistr/vim-nerdtree-tabs'
+
+nmap <tab> :NERDTreeTabsToggle<CR>
+
+let NERDTreeMinimalUI = 1
+let NERDTreeShowHidden = 1
+" let g:nerdtree_tabs_open_on_console_startup = 1
+let g:nerdtree_tabs_focus_on_files = 1
+let g:NERDTreeIndicatorMapCustom = {
+            \ "Modified"  : "✹",
+            \ "Staged"    : "✚",
+            \ "Untracked" : "✭",
+            \ "Renamed"   : "➜",
+            \ "Unmerged"  : "═",
+            \ "Deleted"   : "✖",
+            \ "Dirty"     : "✗",
+            \ "Clean"     : "✔︎",
+            \ 'Ignored'   : '☒',
+            \ "Unknown"   : "?"
+            \ }
+
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='deus'
+let g:airline_powerline_fonts = 1
+let python_highlight_all=1
+
+" Plug 'airblade/vim-gitgutter'
+" Plug 'mhinz/vim-signify'
+" Plug 'gregsexton/MatchTag'
+Plug 'Valloric/MatchTagAlways'
+Plug 'kien/ctrlp.vim'
+Plug 'tpope/vim-surround'
+Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'romainl/vim-cool'
+
+Plug 'posva/vim-vue'
+
+Plug 'liuchengxu/space-vim-dark'
 let g:space_vim_dark_background = 233
 color space-vim-dark
 " set termguicolors
@@ -49,44 +85,11 @@ hi Comment guifg=#5C6370 ctermfg=59
 hi LineNr ctermbg=NONE guibg=NONE
 
 " AutoComplete
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'mattn/emmet-vim'
+Plug 'Valloric/YouCompleteMe' , { 'do': './install.py --clang-completer --system-libclang' }
 
-" Autoformat
-Plugin 'Chiel92/vim-autoformat'
-
-" Trace
-" Plugin 'majutsushi/tagbar.git'
-" Plugin 'ludovicchabant/vim-gutentags'
-" Plugin 'aceofall/gtags.vim'
-
-" Snip
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-
-" Syntax
-" Plugin 'scrooloose/syntastic'
-" Plugin 'nvie/vim-flake8'
-
-" Custom config
-set t_Co=256
-set completeopt-=preview
-set t_ut=
-
-" auto pairs
-let g:AutoPairsShortcutFastWrap='<C-p>e'
-let g:AutoPairsShortcutJump='<C-p>n'
-
-" airline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='deus'
-let g:airline_powerline_fonts = 1
-
-" ycm
 let g:ycm_python_binary_path='/usr/bin/python3'
 let g:ycm_server_python_interpreter='/usr/bin/python3'
-let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf='~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
 let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
 let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
@@ -95,8 +98,9 @@ let g:ycm_complete_in_strings = 1 " Completion in string
 let g:ycm_autoclose_preview_window_after_completion = 0
 let g:ycm_key_list_select_completion=["<tab>"]
 let g:ycm_key_list_previous_completion=["<S-tab>"]
-
-let python_highlight_all=1
+let g:ycm_show_diagnostics_ui = 0
+" let g:ycm_error_symbol = '✗'
+" let g:ycm_warning_warning = '⚡'
 
 " Syntastic
 set statusline+=%#warningmsg#
@@ -117,14 +121,54 @@ let g:user_emmet_leader_key='<C-e>'
 
 " Merge ycm and snippet
 function! <SID>ExpandSnippetOrReturn()
-  let snippet = UltiSnips#ExpandSnippetOrJump()
-  if g:ulti_expand_or_jump_res > 0
-    return snippet
-  else
-    return "\<CR>"
-  endif
+    let snippet = UltiSnips#ExpandSnippetOrJump()
+    if g:ulti_expand_or_jump_res > 0
+        return snippet
+    else
+        return "\<CR>"
+    endif
 endfunction
 inoremap <expr> <CR> pumvisible() ? "<C-R>=<SID>ExpandSnippetOrReturn()<CR>" : "\<CR>"
+
+Plug 'jiangmiao/auto-pairs'
+
+" auto pairs
+let g:AutoPairsShortcutFastWrap='<C-p>e'
+let g:AutoPairsShortcutJump='<C-p>n'
+
+Plug 'mattn/emmet-vim'
+
+Plug 'suan/vim-instant-markdown'
+Plug 'junegunn/goyo.vim'
+Plug 'amix/vim-zenroom2'
+let g:instant_markdown_slow = 1
+let g:instant_markdown_autostart = 0
+
+" Snip
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+Plug 'w0rp/ale'
+
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '⚡'
+let g:ale_statusline_format = ['✗ %d', '⚡ %d', '✔ OK']
+
+let g:ale_sign_column_always = 1
+let g:ale_set_highlights = 0
+let b:ale_fix_on_save = 1
+let g:ale_linters = {
+\   'python': ['pylint'],
+\}
+let g:ale_fixers = {}
+let g:ale_fixers.python = ['yapf']
+let g:ale_fixers.c = ['clang-format']
+let g:ale_fixers.cpp = ['clang-format']
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
+nmap <F3> :ALEFix<CR>
+nmap <leader>w :ALENextWrap<CR>
+nmap <leader>W :ALEPreviousWrap<CR>
 
 " gtags configs
 set cscopetag
@@ -161,13 +205,14 @@ let g:multi_cursor_quit_key            = '<Esc>'
 nmap <F8> :TagbarToggle<CR><CR>
 set tags=tags;
 
-" Awesome config for NerdTree & AirLine
-map <Tab> :NERDTreeToggle<CR>
-" nmap <C-Right> :tabn<CR>
-" nmap <C-Left> :tabp<CR>
-" nmap <C-n> :tabnew<CR>
-nmap <C-Left> :bprev<CR>
-nmap <C-Right> :bnext<CR>
+nmap <A-Left> :bprev<CR>
+nmap <A-Right> :bnext<CR>
+
+imap <C-Left> <Home>
+imap <C-Right> <End>
+map <C-Left> <Home>
+map <C-Right> <End>
+
 set splitright
 nmap <bar> :vnew<CR>
 nmap <S-Up> <C-w>-
@@ -175,7 +220,19 @@ nmap <S-Down> <C-w>+
 nmap <S-Left> <C-w><
 nmap <S-Right> <C-w>>
 
+let g:colorcolumn = 0
+function! SetColorColumn()
+    if g:colorcolumn > 0
+        set colorcolumn=
+        let g:colorcolumn=0
+    else
+        set colorcolumn=80
+        let g:colorcolumn=80
+    endif
+endfunction
+
+nmap <leader>cc :call SetColorColumn()<CR>
 nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
-call vundle#end()             " required
+call plug#end()             " required
 filetype plugin indent on     " required
