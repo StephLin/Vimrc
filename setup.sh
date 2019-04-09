@@ -3,13 +3,13 @@ sudo apt-get update
 wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
 
 # for ubuntu 16.04 installing llvm-7.0
-sudo apt-add-repository "deb http://apt.llvm.org/$(lsb_release -cs)/ llvm-toolchain-$(lsb_release -cs)-7.0 main"
+sudo apt-add-repository "deb http://apt.llvm.org/$(lsb_release -cs)/ llvm-toolchain-$(lsb_release -cs)-7 main"
 sudo apt-add-repository ppa:jonathonf/vim
 sudo apt-get update
 
 sudo apt-get remove -y vim
 
-sudo apt-get install -y vim git python-dev python3 cmake build-essential libclang-7.0-dev libboost-all-dev python python3 python-dev python3-dev powerline fonts-powerline
+sudo apt-get install -y vim git python-dev python3 cmake build-essential libclang-7-dev libboost-all-dev python python3 python-dev python3-dev powerline fonts-powerline
 
 cp ./.vimrc ~
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
