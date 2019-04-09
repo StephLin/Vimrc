@@ -3,8 +3,8 @@ sudo apt-get update
 wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
 
 # for ubuntu 16.04 installing llvm-7.0
-sudo apt-add-repository "deb http://apt.llvm.org/$(lsb_release -cs)/ llvm-toolchain-$(lsb_release -cs)-7 main"
-sudo apt-add-repository ppa:jonathonf/vim
+sudo apt-add-repository -y "deb http://apt.llvm.org/$(lsb_release -cs)/ llvm-toolchain-$(lsb_release -cs)-7 main"
+sudo apt-add-repository -y ppa:jonathonf/vim
 sudo apt-get update
 
 sudo apt-get remove -y vim
@@ -28,3 +28,4 @@ rm -r ~/.ycm_build
 mkdir -p ~/.vim/colors
 ln -s ~/.vim/plugged/space-vim-dark/colors/space-vim-dark.vim ~/.vim/colors/space-vim-dark.vim
 
+cp ~/.vim/plugged/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py ~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py
