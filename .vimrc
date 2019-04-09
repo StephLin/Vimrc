@@ -156,15 +156,18 @@ let g:ale_statusline_format = ['✗ %d', '⚡ %d', '✔ OK']
 
 let g:ale_sign_column_always = 1
 let g:ale_set_highlights = 0
-let b:ale_fix_on_save = 1
+let g:ale_fix_on_save = 1
 let g:ale_linters = {
 \   'python': ['pylint'],
 \}
-let g:ale_fixers = {}
-let g:ale_fixers.python = ['yapf']
-let g:ale_fixers.c = ['clang-format']
-let g:ale_fixers.cpp = ['clang-format']
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'python': ['autopep8'],
+\   'c': ['clang-format'],
+\   'cpp': ['clang-format'],
+\}
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:airline#extensions#ale#enabled = 1
 
 nmap <F3> :ALEFix<CR>
 nmap <leader>w :ALENextWrap<CR>
@@ -219,6 +222,8 @@ nmap <S-Up> <C-w>-
 nmap <S-Down> <C-w>+
 nmap <S-Left> <C-w><
 nmap <S-Right> <C-w>>
+
+vnoremap // y/<C-R>"<CR>N
 
 let g:colorcolumn = 0
 function! SetColorColumn()
