@@ -23,7 +23,7 @@ cmake -G "Unix Makefiles" -DUSE_SYSTEM_BOOST=ON -DUSE_SYSTEM_LIBCLANG=ON . ~/.vi
 cmake --build . --target ycm_core --config Release
 rm -r ~/.ycm_build
 
-~/.vim/plugged/YouCompleteMe/install.py --clang-completer --system-libclang
+python3 ~/.vim/plugged/YouCompleteMe/install.py --clang-completer --system-libclang
 
 mkdir -p ~/.vim/colors
 ln -s ~/.vim/plugged/space-vim-dark/colors/space-vim-dark.vim ~/.vim/colors/space-vim-dark.vim
