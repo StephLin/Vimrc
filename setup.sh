@@ -9,13 +9,18 @@ sudo apt-get update
 
 sudo apt-get remove -y vim
 
-sudo apt-get install -y vim git python-dev python3 cmake build-essential libclang-7-dev libboost-all-dev python python3 python-dev python3-dev powerline fonts-powerline
+sudo apt-get install -y vim git curl python-dev python3 cmake build-essential libclang-7-dev libboost-all-dev python python3 python-dev python3-dev powerline fonts-powerline
 
 cp ./.vimrc ~
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+mkdir -p ~/.vim/colors
+touch ~/.vim/colors/space-vim-dark.vim
+
 vim +PlugInstall +qall
+
+rm ~/.vim/colors/space-vim-dark.vim
 
 mkdir ~/.ycm_build
 cd ~/.ycm_build
@@ -25,7 +30,6 @@ rm -r ~/.ycm_build
 
 python3 ~/.vim/plugged/YouCompleteMe/install.py --clang-completer --system-libclang
 
-mkdir -p ~/.vim/colors
 ln -s ~/.vim/plugged/space-vim-dark/colors/space-vim-dark.vim ~/.vim/colors/space-vim-dark.vim
 
 cp ~/.vim/plugged/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py ~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py
