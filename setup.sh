@@ -1,4 +1,7 @@
 #!/bin/bash
+
+SETUP_PATH=$PWD
+
 sudo apt-get update
 wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
 
@@ -32,4 +35,4 @@ python3 ~/.vim/plugged/YouCompleteMe/install.py --clang-completer --system-libcl
 
 ln -s ~/.vim/plugged/space-vim-dark/colors/space-vim-dark.vim ~/.vim/colors/space-vim-dark.vim
 
-cp ~/.vim/plugged/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py ~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py
+cp $SETUP_PATH/.ycm_extra_conf.py ~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py
