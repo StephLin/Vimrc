@@ -224,6 +224,7 @@ nmap <S-Left> <C-w><
 nmap <S-Right> <C-w>>
 
 vnoremap // y/<C-R>"<CR>N
+nmap <Leader>/ ebvey/<C-R>"<CR>N
 
 let g:colorcolumn = 0
 function! SetColorColumn()
