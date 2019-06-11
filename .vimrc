@@ -10,8 +10,9 @@ augroup END
 set tabstop=4
 set expandtab
 set shiftwidth=4
-set encoding=utf-8
+set softtabstop=4
 set laststatus=2
+set encoding=utf-8
 set autoindent " indent automatically on pressing enter
 set background=dark " Fix tmux color error
 set backspace=indent,eol,start
@@ -118,6 +119,7 @@ let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:ulti_expand_or_jump_res = 0
 let g:user_emmet_leader_key='<C-e>'
+let g:syntastic_java_checkers = []
 
 " Merge ycm and snippet
 function! <SID>ExpandSnippetOrReturn()
@@ -150,9 +152,10 @@ Plug 'honza/vim-snippets'
 
 Plug 'w0rp/ale'
 
-let g:ale_sign_error = '✗'
-let g:ale_sign_warning = '⚡'
-let g:ale_statusline_format = ['✗ %d', '⚡ %d', '✔ OK']
+let g:ale_sign_error = '>>' "'✗'
+let g:ale_sign_warning = '--' "'⚡'
+" let g:ale_statusline_format = ['✗ %d', '⚡ %d', '✔ OK']
+let g:ale_statusline_format = ['>> %d', '-- %d', '✔ OK']
 
 let g:ale_sign_column_always = 1
 let g:ale_set_highlights = 0
@@ -162,9 +165,10 @@ let g:ale_linters = {
 \}
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'python': ['autopep8'],
 \   'c': ['clang-format'],
 \   'cpp': ['clang-format'],
+\   'python': ['autopep8'],
+\   'java': ['google_java_format'],
 \}
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:airline#extensions#ale#enabled = 1
@@ -205,6 +209,9 @@ let g:multi_cursor_prev_key            = '<C-r>'
 let g:multi_cursor_skip_key            = '<c-x>'
 let g:multi_cursor_quit_key            = '<Esc>'
 
+" Vim Laravel 5^
+Plug 'jwalton512/vim-blade'
+
 nmap <F8> :TagbarToggle<CR><CR>
 set tags=tags;
 
@@ -222,6 +229,8 @@ nmap <S-Up> <C-w>-
 nmap <S-Down> <C-w>+
 nmap <S-Left> <C-w><
 nmap <S-Right> <C-w>>
+
+nmap <Leader>v ebve
 
 vnoremap // y/<C-R>"<CR>N
 nmap <Leader>/ ebvey/<C-R>"<CR>N
