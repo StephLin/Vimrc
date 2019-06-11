@@ -2,26 +2,61 @@ set nu
 set relativenumber
 
 augroup numbertoggle
-  autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+    autocmd!
+    autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+    autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
 
 set tabstop=4
 set expandtab
 set shiftwidth=4
-set encoding=utf-8
+set softtabstop=4
 set laststatus=2
+set encoding=utf-8
 set autoindent " indent automatically on pressing enter
 set background=dark " Fix tmux color error
 set backspace=indent,eol,start
+set hlsearch
+set incsearch
+set hidden
 
-let python_highlight_all=1
+set t_Co=256
+set completeopt-=preview
+set t_ut=
 
-map <C-Left> :bprev<CR>
-map <C-Right> :bnext<CR>
-map <bar> :vnew<CR>
+syntax on
+
+nmap <A-Left> :bprev<CR>
+nmap <A-Right> :bnext<CR>
+
+imap <C-Left> <Home>
+imap <C-Right> <End>
+map <C-Left> <Home>
+map <C-Right> <End>
+
+set splitright
+nmap <bar> :vnew<CR>
 nmap <S-Up> <C-w>-
 nmap <S-Down> <C-w>+
 nmap <S-Left> <C-w><
 nmap <S-Right> <C-w>>
+
+nmap <Leader>v ebve
+
+vnoremap // y/<C-R>"<CR>N
+nmap <Leader>/ ebvey/<C-R>"<CR>N
+nmap <Leader>d ebve
+nmap <Leader>D EBvE
+
+let g:colorcolumn = 0
+function! SetColorColumn()
+    if g:colorcolumn > 0
+        set colorcolumn=
+        let g:colorcolumn=0
+    else
+        set colorcolumn=80
+        let g:colorcolumn=80
+    endif
+endfunction
+
+nmap <leader>cc :call SetColorColumn()<CR>
