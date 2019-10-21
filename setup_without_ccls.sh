@@ -28,12 +28,4 @@ ln -s ~/.vim/plugged/space-vim-dark/colors/space-vim-dark.vim ~/.vim/colors/spac
 
 python3 -m pip install python-language-server --user
 
-cp ./TabNine.toml ~/.config/TabNine
-
-# build ccls
-mkdir -p ~/.vim/makes
-cde ~/.vim/makes
-git clone --depth=1 --recursive https://github.com/MaskRay/ccls
-cd ccls
-cmake -H. -BRelease -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/path/to/clang+llvm-xxx
-cmake --build Release
+cp ./TabNine_global_ccls.toml ~/.config/TabNine/

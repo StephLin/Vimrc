@@ -86,8 +86,8 @@ hi Comment guifg=#5C6370 ctermfg=59
 hi LineNr ctermbg=NONE guibg=NONE
 
 " AutoComplete
-Plug 'Valloric/YouCompleteMe' , { 'do': './install.py --clang-completer --system-libclang' }
-
+" Plug 'Valloric/YouCompleteMe' , { 'do': './install.py --clang-completer --system-libclang' }
+"
 let g:ycm_python_binary_path='/usr/bin/python3'
 let g:ycm_server_python_interpreter='/usr/bin/python3'
 let g:ycm_global_ycm_extra_conf='~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
@@ -172,6 +172,10 @@ let g:ale_fixers = {
 \}
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:airline#extensions#ale#enabled = 1
+let g:ale_python_pylint_options='--extension-pkg-whitelist=wx'
+
+:command ALEFixerEnable let g:ale_fix_on_save=1
+:command ALEFixerDisable let g:ale_fix_on_save=0
 
 nmap <F3> :ALEFix<CR>
 nmap <leader>w :ALENextWrap<CR>
@@ -212,8 +216,23 @@ let g:multi_cursor_quit_key            = '<Esc>'
 " Vim Laravel 5^
 Plug 'jwalton512/vim-blade'
 
+Plug 'zxqfl/tabnine-vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'pdavydov108/vim-lsp-cquery'
+
+Plug 'prabirshrestha/async.vim'
+" Plug 'ryanolsonx/vim-lsp-python'
+
+" git
+Plug 'tpope/vim-fugitive'
+
+" fzf
+Plug '~/.fzf'
+Plug 'junegunn/fzf.vim'
+command F :Files
+
 nmap <F8> :TagbarToggle<CR><CR>
-set tags=tags;
+" set tags=tags;
 
 nmap <A-Left> :bprev<CR>
 nmap <A-Right> :bnext<CR>
@@ -222,6 +241,11 @@ imap <C-Left> <Home>
 imap <C-Right> <End>
 map <C-Left> <Home>
 map <C-Right> <End>
+
+imap <C-Up> <PageUp>
+imap <C-Down> <PageDown>
+map <C-Up> <PageUp>
+map <C-Down> <PageDown>
 
 set splitright
 nmap <bar> :vnew<CR>
@@ -233,9 +257,9 @@ nmap <S-Right> <C-w>>
 nmap <Leader>v ebve
 
 vnoremap // y/<C-R>"<CR>N
-nmap <Leader>/ ebvey/<C-R>"<CR>N
-nmap <Leader>d ebve
-nmap <Leader>D EBvE
+nmap <Leader>/ <Left>ebvey/<C-R>"<CR>N
+nmap <Leader>d <Left>ebve
+nmap <Leader>D <Left>EBvE
 
 let g:colorcolumn = 0
 function! SetColorColumn()
@@ -249,7 +273,10 @@ function! SetColorColumn()
 endfunction
 
 nmap <leader>cc :call SetColorColumn()<CR>
-nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+" ycm declaration
+" nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+nnoremap <leader>gg :LspDefinition<CR>
 
 call plug#end()             " required
 filetype plugin indent on     " required
