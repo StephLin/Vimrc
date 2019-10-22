@@ -12,7 +12,7 @@ sudo apt-get update
 
 sudo apt-get remove -y vim
 
-sudo apt-get install -y vim git curl python-dev python3 cmake build-essential libclang-7-dev libboost-all-dev python python3 python-dev python3-dev powerline fonts-powerline
+sudo apt-get install -y vim git curl python-dev python3 cmake build-essential libclang-7-dev libboost-all-dev python python3 python-dev python3-dev python-pip python3-pip powerline fonts-powerline libtinfo-dev
 
 cp ./.vimrc ~
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
@@ -28,14 +28,18 @@ ln -s ~/.vim/plugged/space-vim-dark/colors/space-vim-dark.vim ~/.vim/colors/spac
 
 python3 -m pip install python-language-server --user
 
+mkdir -p ~/.config/TabNine
 cp ./TabNine.toml ~/.config/TabNine
 
 # build ccls
 mkdir -p ~/.vim/makes
-cde ~/.vim/makes
+cd ~/.vim/makes
 git clone --depth=1 --recursive https://github.com/MaskRay/ccls
 cd ccls
 wget -c http://releases.llvm.org/8.0.0/clang+llvm-8.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz
 tar xf clang+llvm-8.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz
 cmake -H. -BRelease -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=$PWD/clang+llvm-8.0.0-x86_64-linux-gnu-ubuntu-18.04
 cmake --build Release
+
+echo 'export PATH=$PATH:/'$PWD'/Release' >> ~/.bashrc
+source ~/.bashrc

@@ -1,5 +1,5 @@
 [language.cpp]
-command = "~/.vim/makes/ccls/Release/ccls"
+command = "ccls"
 args = ["--init={\"cacheDirectory\":\"${project_root}/.ccls\"}"]
 synchronous_triggers = ["."]
 synchronous_timeout_ms = 200

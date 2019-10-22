@@ -28,4 +28,4 @@ ln -s ~/.vim/plugged/space-vim-dark/colors/space-vim-dark.vim ~/.vim/colors/spac
 
 python3 -m pip install python-language-server --user
 
-cp ./TabNine_global_ccls.toml ~/.config/TabNine/
+cp ./TabNine.toml ~/.config/TabNine/
