@@ -35,25 +35,24 @@ call plug#begin('~/.vim/plugged')
 Plug 'VundleVim/Vundle.vim' " required
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeTabsToggle' }
 Plug 'jistr/vim-nerdtree-tabs'
-
 nmap <tab> :NERDTreeTabsToggle<CR>
 
 let NERDTreeMinimalUI = 1
 let NERDTreeShowHidden = 1
 " let g:nerdtree_tabs_open_on_console_startup = 1
 let g:nerdtree_tabs_focus_on_files = 1
-let g:NERDTreeIndicatorMapCustom = {
-            \ "Modified"  : "✹",
-            \ "Staged"    : "✚",
-            \ "Untracked" : "✭",
-            \ "Renamed"   : "➜",
-            \ "Unmerged"  : "═",
-            \ "Deleted"   : "✖",
-            \ "Dirty"     : "✗",
-            \ "Clean"     : "✔︎",
-            \ 'Ignored'   : '☒',
-            \ "Unknown"   : "?"
-            \ }
+" let g:NERDTreeIndicatorMapCustom = {
+"             \ "Modified"  : "✹",
+"             \ "Staged"    : "✚",
+"             \ "Untracked" : "✭",
+"             \ "Renamed"   : "➜",
+"             \ "Unmerged"  : "═",
+"             \ "Deleted"   : "✖",
+"             \ "Dirty"     : "✗",
+"             \ "Clean"     : "✔︎",
+"             \ 'Ignored'   : '☒',
+"             \ "Unknown"   : "?"
+"             \ }
 
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'vim-airline/vim-airline'
@@ -85,52 +84,52 @@ hi Comment cterm=italic
 hi Comment guifg=#5C6370 ctermfg=59
 hi LineNr ctermbg=NONE guibg=NONE
 
-" AutoComplete
+" " AutoComplete
 " Plug 'Valloric/YouCompleteMe' , { 'do': './install.py --clang-completer --system-libclang' }
 "
-let g:ycm_python_binary_path='/usr/bin/python3'
-let g:ycm_server_python_interpreter='/usr/bin/python3'
-let g:ycm_global_ycm_extra_conf='~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
-let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
-let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
-let g:ycm_complete_in_comments = 1 " Completion in comments
-let g:ycm_complete_in_strings = 1 " Completion in string
-let g:ycm_autoclose_preview_window_after_completion = 0
-let g:ycm_key_list_select_completion=["<tab>"]
-let g:ycm_key_list_previous_completion=["<S-tab>"]
-let g:ycm_show_diagnostics_ui = 0
-" let g:ycm_error_symbol = '✗'
-" let g:ycm_warning_warning = '⚡'
+" let g:ycm_python_binary_path='/usr/bin/python3'
+" let g:ycm_server_python_interpreter='/usr/bin/python3'
+" let g:ycm_global_ycm_extra_conf='~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+" let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
+" let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
+" let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
+" let g:ycm_complete_in_comments = 1 " Completion in comments
+" let g:ycm_complete_in_strings = 1 " Completion in string
+" let g:ycm_autoclose_preview_window_after_completion = 0
+" let g:ycm_key_list_select_completion=["<tab>"]
+" let g:ycm_key_list_previous_completion=["<S-tab>"]
+" let g:ycm_show_diagnostics_ui = 0
+" " let g:ycm_error_symbol = '✗'
+" " let g:ycm_warning_warning = '⚡'
 
-" Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" " Syntastic
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+"
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 0
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_python_python_exe = 'python3'
+"
+" let g:UltiSnipsJumpForwardTrigger="<tab>"
+" let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:ulti_expand_or_jump_res = 0
+" let g:user_emmet_leader_key='<C-e>'
+" let g:syntastic_java_checkers = []
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_python_python_exe = 'python3'
-
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:ulti_expand_or_jump_res = 0
-let g:user_emmet_leader_key='<C-e>'
-let g:syntastic_java_checkers = []
-
-" Merge ycm and snippet
-function! <SID>ExpandSnippetOrReturn()
-    let snippet = UltiSnips#ExpandSnippetOrJump()
-    if g:ulti_expand_or_jump_res > 0
-        return snippet
-    else
-        return "\<CR>"
-    endif
-endfunction
-inoremap <expr> <CR> pumvisible() ? "<C-R>=<SID>ExpandSnippetOrReturn()<CR>" : "\<CR>"
+" " Merge ycm and snippet
+" function! <SID>ExpandSnippetOrReturn()
+"     let snippet = UltiSnips#ExpandSnippetOrJump()
+"     if g:ulti_expand_or_jump_res > 0
+"         return snippet
+"     else
+"         return "\<CR>"
+"     endif
+" endfunction
+" inoremap <expr> <CR> pumvisible() ? "<C-R>=<SID>ExpandSnippetOrReturn()<CR>" : "\<CR>"
 
 Plug 'jiangmiao/auto-pairs'
 
@@ -161,13 +160,13 @@ let g:ale_sign_column_always = 1
 let g:ale_set_highlights = 0
 let g:ale_fix_on_save = 1
 let g:ale_linters = {
-\   'python': ['pylint'],
+\   'python': ['flake8'],
 \}
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'c': ['clang-format'],
 \   'cpp': ['clang-format'],
-\   'python': ['autopep8'],
+\   'python': ['yapf'],
 \   'java': ['google_java_format'],
 \}
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
@@ -181,47 +180,63 @@ nmap <F3> :ALEFix<CR>
 nmap <leader>w :ALENextWrap<CR>
 nmap <leader>W :ALEPreviousWrap<CR>
 
-" gtags configs
-set cscopetag
-set cscopeprg='gtags-cscope'
+" " gtags configs
+" set cscopetag
+" set cscopeprg='gtags-cscope'
+"
+" let GtagsCscope_Auto_Load = 1
+" let CtagsCscope_Auto_Map = 1
+" let GtagsCscope_Quiet = 1
+"
+" nmap zs :cs find s <C-R>=expand("<cword>")<CR><CR>
+" nmap zg :cs find g <C-R>=expand("<cword>")<CR><CR>
+" nmap zc :cs find c <C-R>=expand("<cword>")<CR><CR>
+" nmap zt :cs find t <C-R>=expand("<cword>")<CR><CR>
+" nmap ze :cs find e <C-R>=expand("<cword>")<CR><CR>
+" nmap zf :cs find f <C-R>=expand("<cfile>")<CR><CR>
+" nmap zi :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+" nmap zd :cs find d <C-R>=expand("<cword>")<CR><CR>
+"
+" map <C-n> :cn<CR>
+" map <C-p> :cp<CR>
+" nnoremap <C-\> :exec("Gtags -r ".expand("<cword>"))<cr>
+" nnoremap <C-m> :exec("Gtags -s ".expand("<cword>"))<cr>
 
-let GtagsCscope_Auto_Load = 1
-let CtagsCscope_Auto_Map = 1
-let GtagsCscope_Quiet = 1
-
-nmap zs :cs find s <C-R>=expand("<cword>")<CR><CR>
-nmap zg :cs find g <C-R>=expand("<cword>")<CR><CR>
-nmap zc :cs find c <C-R>=expand("<cword>")<CR><CR>
-nmap zt :cs find t <C-R>=expand("<cword>")<CR><CR>
-nmap ze :cs find e <C-R>=expand("<cword>")<CR><CR>
-nmap zf :cs find f <C-R>=expand("<cfile>")<CR><CR>
-nmap zi :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-nmap zd :cs find d <C-R>=expand("<cword>")<CR><CR>
-
-map <C-n> :cn<CR>
-map <C-p> :cp<CR>
-nnoremap <C-\> :exec("Gtags -r ".expand("<cword>"))<cr>
-nnoremap <C-m> :exec("Gtags -s ".expand("<cword>"))<cr>
-
-" multicursor
-let g:multi_cursor_start_word_key      = '<C-d>'
-let g:multi_cursor_select_all_word_key = '<S-D>'
-let g:multi_cursor_start_key           = 'g<C-d>'
-let g:multi_cursor_select_all_key      = 'g<S-D>'
-let g:multi_cursor_next_key            = '<C-d>'
-let g:multi_cursor_prev_key            = '<C-r>'
-let g:multi_cursor_skip_key            = '<c-x>'
-let g:multi_cursor_quit_key            = '<Esc>'
+" " multicursor
+" let g:multi_cursor_start_word_key      = '<C-d>'
+" let g:multi_cursor_select_all_word_key = '<S-D>'
+" let g:multi_cursor_start_key           = 'g<C-d>'
+" let g:multi_cursor_select_all_key      = 'g<S-D>'
+" let g:multi_cursor_next_key            = '<C-d>'
+" let g:multi_cursor_prev_key            = '<C-r>'
+" let g:multi_cursor_skip_key            = '<c-x>'
+" let g:multi_cursor_quit_key            = '<Esc>'
 
 " Vim Laravel 5^
 Plug 'jwalton512/vim-blade'
 
 Plug 'zxqfl/tabnine-vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'pdavydov108/vim-lsp-cquery'
 
 Plug 'prabirshrestha/async.vim'
-" Plug 'ryanolsonx/vim-lsp-python'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'ryanolsonx/vim-lsp-python'
+" Plug 'pdavydov108/vim-lsp-cquery'
+let g:lsp_diagnostics_enabled = 0
+
+if executable('ccls')
+   au User lsp_setup call lsp#register_server({
+      \ 'name': 'ccls',
+      \ 'cmd': {server_info->['ccls']},
+      \ 'initialization_options': {},
+      \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
+      \ })
+endif
+
+" let g:lsp_log_verbose = 1
+" let g:lsp_log_file = expand('~/vim-lsp.log')
+
+nmap <leader>gd :LspDefinition<CR>
+nmap <leader>pd :LspPeekDefinition<CR>
 
 " git
 Plug 'tpope/vim-fugitive'
@@ -229,7 +244,13 @@ Plug 'tpope/vim-fugitive'
 " fzf
 Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
-command F :Files
+
+" code-formatter
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
+Plug 'google/vim-glaive'
+
+Plug 'heavenshell/vim-pydocstring'
 
 nmap <F8> :TagbarToggle<CR><CR>
 " set tags=tags;
@@ -273,10 +294,6 @@ function! SetColorColumn()
 endfunction
 
 nmap <leader>cc :call SetColorColumn()<CR>
-" ycm declaration
-" nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
-
-nnoremap <leader>gg :LspDefinition<CR>
 
 call plug#end()             " required
 filetype plugin indent on     " required
