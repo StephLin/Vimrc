@@ -12,7 +12,7 @@ sudo apt-get update
 
 sudo apt-get remove -y vim
 
-sudo apt-get install -y vim git curl cmake build-essential python python3 python-dev python3-dev python-pip python3-pip powerline fonts-powerline libtinfo-dev silversearcher-ag
+sudo apt-get install -y vim git curl cmake build-essential python python3 python-dev python3-dev python-pip python3-pip powerline fonts-powerline libtinfo-dev silversearcher-ag zlib1g-dev
 
 cp ./.vimrc ~
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
