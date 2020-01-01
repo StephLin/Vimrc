@@ -72,7 +72,8 @@ Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-surround'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'romainl/vim-cool'
+" Plug 'romainl/vim-cool'
+Plug 'junegunn/vim-slash'
 
 Plug 'posva/vim-vue'
 
