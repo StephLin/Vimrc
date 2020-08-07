@@ -26,7 +26,7 @@ vim +PlugInstall +qall
 rm ~/.vim/colors/space-vim-dark.vim
 ln -s ~/.vim/plugged/space-vim-dark/colors/space-vim-dark.vim ~/.vim/colors/space-vim-dark.vim
 
-python3 -m pip install python-language-server yapf flake8 --user
+python3 -m pip install python-language-server yapf flake8
 
 mkdir -p ~/.config/TabNine
 cp ./TabNine.toml ~/.config/TabNine
